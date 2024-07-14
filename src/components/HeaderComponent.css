@@ -1,0 +1,56 @@
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000; /* Ensures header stays above other content */
+  background-color: lightblue;
+}
+
+/* Flex container inside the header */
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+/* Navigation styling */
+nav ul {
+  list-style-type: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+
+nav ul li a:hover {
+  color: darkblue;
+}
+.tabs ul li a:hover:before {
+  width: 100%;
+  background-color: darkblue;
+}
+
+.tabs ul li a:before {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 0;
+  background-color: #000;
+  bottom: -3px;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+@media (max-width: 991px) {
+  nav ul li {
+    margin-right: 10px;
+  }
+}

@@ -24,20 +24,21 @@ const ListTodoComponent = () => {
       <br />
       <br />
       {todos.map((todo) => (
-        <div key={todo.id}>
-          <h2>Todo Title</h2>
-          <p>{todo.title}</p>
-          <br />
-          <br />
-          <h2>Todo Description</h2>
-          <p>{todo.description}</p>
-          <br />
-          <br />
-          <h2>Todo Completed</h2>
-          <p>{todo.completed ? "yes" : "no"}</p>
-          <br />
-          <br />
-          <hr />
+        <div key={todo.id} className="item">
+          <div className="sub-item ">
+            <h2>Todo Title</h2>
+            <p>{todo.title}</p>
+          </div>
+
+          <div className="sub-item ">
+            <h2>Todo Description</h2>
+            <p>{todo.description}</p>
+          </div>
+
+          <div className="sub-item ">
+            <h2>Todo Completed</h2>
+            <p>{todo.completed ? "yes" : "no"}</p>
+          </div>
         </div>
       ))}
     </div>

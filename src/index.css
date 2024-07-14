@@ -16,6 +16,7 @@ html {
 body {
   font-family: "Jost", sans-serif;
   box-sizing: border-box;
+  background-color: lightblue;
 }
 
 main {
@@ -25,6 +26,17 @@ main {
 p {
   font-size: 2rem;
   text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  font-size: 2rem;
+}
+
+hr {
+  background-color: #000;
+  height: 4px;
 }
 
 h1 {
@@ -46,6 +58,9 @@ h2 {
   h2 {
     font-size: 2.5rem;
   }
+  a {
+    font-size: 1.7rem;
+  }
 }
 
 @media (max-width: 1400px) {
@@ -54,5 +69,8 @@ h2 {
   }
   h2 {
     font-size: 2rem;
+  }
+  a {
+    font-size: 1.5rem;
   }
 }
