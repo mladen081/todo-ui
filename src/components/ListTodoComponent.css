@@ -16,7 +16,7 @@
 @media (max-width: 991px) {
   .container {
     background-color: lightseagreen;
-    padding: 7rem 0;
+    padding: 9rem 0;
   }
 
   .item {
@@ -27,7 +27,7 @@
 @media (max-width: 767px) {
   .container {
     background-color: lightseagreen;
-    padding: 5rem 0;
+    padding: 8rem 0;
   }
 
   .item {
