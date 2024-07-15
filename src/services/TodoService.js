@@ -7,3 +7,5 @@ const BASE_URL = "https://todo-q4uj.onrender.com/api/todos";
 // }
 
 export const getAllTodos = () => axios.get(BASE_URL);
+
+export const saveTodo = (todo) => axios.post(BASE_URL, todo);

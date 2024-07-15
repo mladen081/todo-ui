@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { getAllTodos } from "../services/TodoService";
 import "./ListTodoComponent.css";
+import { useNavigate } from "react-router-dom";
+
 const ListTodoComponent = () => {
   const [todos, setTodos] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     listTodos();
@@ -18,9 +22,19 @@ const ListTodoComponent = () => {
       });
   }
 
+  function addNewTodo() {
+    navigate("/add-todo");
+  }
+
   return (
     <div className="container">
       <h1>List of Todos</h1>
+
+      <div className="btn-holder">
+        <button className="custom-btn" onClick={addNewTodo}>
+          Add Todo
+        </button>
+      </div>
       <br />
       <br />
       {todos.map((todo) => (

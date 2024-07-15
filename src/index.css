@@ -51,6 +51,29 @@ h2 {
   font-weight: 700;
 }
 
+.btn-holder {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  border: 2px solid #000;
+  border-radius: 5px;
+  background-color: lightblue;
+}
+
+button:disabled {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+button:hover {
+  border: 2px solid darkblue;
+  color: lightseagreen;
+  background-color: darkblue;
+}
+
 @media (max-width: 1600px) {
   h1 {
     font-size: 4rem;
