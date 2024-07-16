@@ -1,7 +1,7 @@
 import "./ListTodoComponent.css";
-import { useState } from "react";
-import { saveTodo } from "../services/TodoService";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getTodo, saveTodo, updateTodo } from "../services/TodoService";
+import { useNavigate, useParams } from "react-router-dom";
 
 import "./TodoComponent.css";
 
@@ -12,22 +12,59 @@ const TodoComponent = () => {
 
   const navigate = useNavigate();
 
+  const { id } = useParams();
+
   function saveOrUpdateTodo(e) {
     e.preventDefault();
     const todo = { title, description, completed };
-    saveTodo(todo)
-      .then((response) => {
-        console.log(response.data);
-        navigate("/todos");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+
+    if (id) {
+      updateTodo(id, todo)
+        .then((response) => {
+          console.log(response.data);
+          navigate("/todos");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      saveTodo(todo)
+        .then((response) => {
+          console.log(response.data);
+          navigate("/todos");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
+
+  function pageTitle() {
+    if (id) {
+      return <h1>Update Todo</h1>;
+    } else {
+      return <h1>Add Todo</h1>;
+    }
+  }
+
+  useEffect(() => {
+    if (id) {
+      getTodo(id)
+        .then((response) => {
+          console.log(response.data);
+          setTitle(response.data.title);
+          setDescription(response.data.description);
+          setCompleted(response.data.completed);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [id]);
 
   return (
     <div className="container">
-      <h1>Add Todo</h1>
+      {pageTitle()}
       <div className="form-container">
         <form>
           <label htmlFor="title">Todo Title:</label>
