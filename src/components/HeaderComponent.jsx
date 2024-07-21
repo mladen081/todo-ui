@@ -1,7 +1,9 @@
+import { isUserLoggedIn } from "../services/AuthService";
 import "./HeaderComponent.css";
 import { NavLink } from "react-router-dom";
 
 const HeaderComponent = () => {
+  const isAuth = isUserLoggedIn();
   return (
     <div>
       <header>
@@ -11,15 +13,23 @@ const HeaderComponent = () => {
           </div>
           <nav className="tabs">
             <ul>
-              <li>
-                <NavLink to="/todos">Todos</NavLink>
-              </li>
-              <li>
-                <NavLink to="/register">Register</NavLink>
-              </li>
-              <li>
-                <NavLink to="/login">Login</NavLink>
-              </li>
+              {isAuth && (
+                <li>
+                  <NavLink to="/todos">Todos</NavLink>
+                </li>
+              )}
+
+              {!isAuth && (
+                <li>
+                  <NavLink to="/register">Register</NavLink>
+                </li>
+              )}
+
+              {!isAuth && (
+                <li>
+                  <NavLink to="/login">Login</NavLink>
+                </li>
+              )}
             </ul>
           </nav>
         </div>
