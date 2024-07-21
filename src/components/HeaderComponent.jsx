@@ -1,9 +1,17 @@
-import { isUserLoggedIn } from "../services/AuthService";
+import { isUserLoggedIn, logout } from "../services/AuthService";
 import "./HeaderComponent.css";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const HeaderComponent = () => {
   const isAuth = isUserLoggedIn();
+
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    logout();
+    navigate("/login");
+  }
   return (
     <div>
       <header>
@@ -28,6 +36,14 @@ const HeaderComponent = () => {
               {!isAuth && (
                 <li>
                   <NavLink to="/login">Login</NavLink>
+                </li>
+              )}
+
+              {isAuth && (
+                <li>
+                  <NavLink to="/login" onClick={handleLogout}>
+                    Logout
+                  </NavLink>
                 </li>
               )}
             </ul>
