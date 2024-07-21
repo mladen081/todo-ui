@@ -11,53 +11,55 @@ import { isUserLoggedIn } from "./services/AuthService";
 function App() {
   function AuthenticatedRoute({ children }) {
     const isAuth = isUserLoggedIn();
-    if (isAuth) {
-      return children;
-    }
-
-    return <Navigate to="/" />;
+    return isAuth ? children : <Navigate to="/" />;
   }
 
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LoginComponent />}></Route>
+    <BrowserRouter>
+      <Routes>
+        {/* Login route (assuming it's the default route for /) */}
+        <Route path="/" element={<LoginComponent />} />
 
-          <Route
-            path="/todos"
-            element={
-              <AuthenticatedRoute>
-                <ListTodoComponent />
-              </AuthenticatedRoute>
-            }
-          ></Route>
+        {/* Protected routes */}
+        <Route
+          path="/todos"
+          element={
+            <AuthenticatedRoute>
+              <ListTodoComponent />
+            </AuthenticatedRoute>
+          }
+        />
+        <Route
+          path="/add-todo"
+          element={
+            <AuthenticatedRoute>
+              <TodoComponent />
+            </AuthenticatedRoute>
+          }
+        />
+        <Route
+          path="/update-todo/:id"
+          element={
+            <AuthenticatedRoute>
+              <TodoComponent />
+            </AuthenticatedRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <AuthenticatedRoute>
+              <RegisterComponent />
+            </AuthenticatedRoute>
+          }
+        />
 
-          <Route
-            path="/add-todo"
-            element={
-              <AuthenticatedRoute>
-                <TodoComponent />
-              </AuthenticatedRoute>
-            }
-          ></Route>
-
-          <Route path="/update-todo/:id" element={<TodoComponent />}></Route>
-
-          <Route
-            path="/register"
-            element={
-              <AuthenticatedRoute>
-                <RegisterComponent />
-              </AuthenticatedRoute>
-            }
-          ></Route>
-          <Route path="/login" element={<LoginComponent />}></Route>
-        </Routes>
-        <HeaderComponent />
-        <FooterComponent />
-      </BrowserRouter>
-    </>
+        {/* Public routes */}
+        <Route path="/login" element={<LoginComponent />} />
+      </Routes>
+      <HeaderComponent />
+      <FooterComponent />
+    </BrowserRouter>
   );
 }
 
