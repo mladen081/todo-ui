@@ -26,7 +26,7 @@ const LoginComponent = () => {
 
         navigate("/todos");
 
-        window.location.reload(false);
+        // window.location.reload(false);
       })
       .catch((error) => {
         console.error(error);
