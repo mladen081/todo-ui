@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getToken } from "./AuthService";
 
-const BASE_URL = "https://todo-q4uj.onrender.com/api/todos";
+const BASE_URL = "https://todo-9sqy.onrender.com/api/todos";
 // const BASE_URL = "http://localhost:8080/api/todos";
 
 // Add a request interceptor

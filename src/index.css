@@ -74,7 +74,7 @@ button:disabled {
 
 button:hover {
   border: 2px solid darkblue;
-  color: lightseagreen;
+  color: white;
   background-color: darkblue;
 }
 

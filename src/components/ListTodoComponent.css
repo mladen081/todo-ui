@@ -9,7 +9,7 @@
 
 @media (max-width: 991px) {
   .container {
-    background-color: lightseagreen;
+    background-color: white;
     padding: 9rem 0;
   }
 
@@ -20,7 +20,7 @@
 
 @media (max-width: 767px) {
   .container {
-    background-color: lightseagreen;
+    background-color: white;
     padding: 8rem 0;
   }
 
