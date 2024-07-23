@@ -17,12 +17,13 @@ const LoginComponent = () => {
 
     await loginAPICall(username, password)
       .then((response) => {
-        console.log(response.data);
+        // const token = "Basic " + window.btoa(username + ":" + password);
+        const token = "Bearer " + response.data.accessToken;
 
-        const token = "Basic " + window.btoa(username + ":" + password);
-        console.log(token);
+        const role = response.data.role;
+
         storeToken(token);
-        saveLoggedInUser(username);
+        saveLoggedInUser(username, role);
 
         navigate("/todos");
 

@@ -7,11 +7,14 @@ import {
 } from "../services/TodoService";
 import "./ListTodoComponent.css";
 import { useNavigate } from "react-router-dom";
+import { isAdminUser } from "../services/AuthService";
 
 const ListTodoComponent = () => {
   const [todos, setTodos] = useState([]);
 
   const navigate = useNavigate();
+
+  const isAdmin = isAdminUser();
 
   useEffect(() => {
     listTodos();
@@ -73,11 +76,13 @@ const ListTodoComponent = () => {
     <div className="container">
       <h1>List of Todos</h1>
 
-      <div className="btn-holder">
-        <button className="custom-btn" onClick={addNewTodo}>
-          Add Todo
-        </button>
-      </div>
+      {isAdmin && (
+        <div className="btn-holder">
+          <button className="custom-btn" onClick={addNewTodo}>
+            Add Todo
+          </button>
+        </div>
+      )}
 
       {todos.map((todo) => (
         <div key={todo.id} className="item">
@@ -97,13 +102,22 @@ const ListTodoComponent = () => {
           </div>
 
           <div className="btn-holder">
-            <button className="custom-btn" onClick={() => updateTodo(todo.id)}>
-              Update
-            </button>
-
-            <button className="custom-btn" onClick={() => removeTodo(todo.id)}>
-              Delete
-            </button>
+            {isAdmin && (
+              <button
+                className="custom-btn"
+                onClick={() => updateTodo(todo.id)}
+              >
+                Update
+              </button>
+            )}
+            {isAdmin && (
+              <button
+                className="custom-btn"
+                onClick={() => removeTodo(todo.id)}
+              >
+                Delete
+              </button>
+            )}
 
             <button
               className="custom-btn"
