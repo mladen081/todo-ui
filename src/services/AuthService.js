@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const AUTH_REST_API_BASE_URL = "https://todo-9sqy.onrender.com/api/auth";
+const AUTH_REST_API_BASE_URL = "https://todo-gaks.onrender.com/api/auth";
 // const AUTH_REST_API_BASE_URL = "http://localhost:8080/api/auth";
 
 export const registerAPICall = (registerObj) =>
